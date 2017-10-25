@@ -1,3 +1,4 @@
+require "pry"
 class User
   attr_reader :name, :jokes
 
@@ -14,5 +15,11 @@ class User
     user.jokes << joke
   end
 
-  
+  def perform_routine_for(user)
+    jokes.map do |joke|
+      user.jokes << joke
+    end
+  end
+
+
 end
