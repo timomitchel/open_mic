@@ -2,6 +2,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/user'
+require "./lib/joke"
 
 class UserTest < Minitest::Test
   def test_it_exists
@@ -39,5 +40,17 @@ class UserTest < Minitest::Test
     assert_instance_of Joke, ali.jokes[0]
     assert_equal 1, ali.jokes.first.id
     assert_equal question, ali.jokes.first.question
+  end
+
+  def test_user_can_tell_other_user_jokes
+    sal = User.new("Sal")
+    ali = User.new("Ali")
+    joke = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
+    answer = "Because his mother was in a jam."
+    sal.tell(ali, joke)
+
+    assert_equal 1, ali.jokes.first.id
+    assert_equal answer, ali.jokes[0].answer
+    assert_equal 1, ali.jokes.count
   end
 end
