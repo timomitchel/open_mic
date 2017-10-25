@@ -1,5 +1,4 @@
 require "csv"
-require "pry"
 
 class User
 
@@ -32,8 +31,4 @@ class User
   def add_jokes(jokes)
     jokes.map {|joke| @jokes << joke}
   end
-
-
-
-
 end
