@@ -1,5 +1,8 @@
+require "csv"
 require "pry"
+
 class User
+
   attr_reader :name, :jokes
 
   def initialize(name)
@@ -20,6 +23,17 @@ class User
       user.jokes << joke
     end
   end
+
+  def learn_routine(csv)
+    jokes =  CSV.open csv, headers: true
+    add_jokes(jokes)
+  end
+
+  def add_jokes(jokes)
+    jokes.map {|joke| @jokes << joke}
+  end
+
+
 
 
 end
