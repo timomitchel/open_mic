@@ -5,6 +5,7 @@ require './lib/user'
 require "./lib/joke"
 
 class UserTest < Minitest::Test
+  
   def test_it_exists
     sal = User.new("Sal")
 
@@ -47,7 +48,7 @@ class UserTest < Minitest::Test
     ali = User.new("Ali")
     joke = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
     answer = "Because his mother was in a jam."
-    
+
     sal.tell(ali, joke)
 
     assert_equal 1, ali.jokes.first.id
